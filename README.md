@@ -52,5 +52,4 @@ Grid world Value Iteration with discounted rewards gamma = 0.90
  _ _ _ _
 ```
 
-### Class Diagram
-<img src='doc.svg' width=80%>
+Class Diagram can be found at [doc.svg](doc.svg). 
