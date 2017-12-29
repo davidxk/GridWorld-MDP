@@ -5,7 +5,7 @@ from ValueIteration import ValueIteration
 # Run Value Iteration in different Grid World environments
 if __name__ == "__main__":
     gamma = 0.9
-    print "Grid World with discounted rewards gamma = %.2f\n" % gamma
+    print "Grid world Value Iteration with discounted rewards gamma = %.2f\n" % gamma
     gw = GridWorld()
     vi = ValueIteration()
     values = vi.valueIteration(gw, gamma)
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     gw.printPolicy(policy)
 
     reward = -0.01
-    print "Grid World with additive rewards = %.2f\n" % reward
+    print "Grid world Value Iteration with additive rewards = %.2f\n" % reward
     gwa = GridWorldAdditive(reward)
     values = vi.valueIteration(gwa, 1, 100)
     gwa.printValues(values)

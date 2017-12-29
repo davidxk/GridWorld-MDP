@@ -58,5 +58,7 @@ class TestLearningAgent:
 if __name__ == "__main__":
     test = TestLearningAgent()
     env = GridEnv()
+    print "Test Q-Learning Agent\n"
     test.testLearningAgent(QLearning(env.getLegalActions), env, 5000)
+    print "Test Epsilon Decreasing Agent\n"
     test.testLearningAgent(EpsilonDecreasing(env.getLegalActions), env, 5000)
