@@ -57,7 +57,7 @@ class TestLearningAgent:
 # Epsilon Decreasing Agent exploits more, so scores higher than Q-Learning agent
 if __name__ == "__main__":
     test = TestLearningAgent()
-    env = GridEnv()
+    env = GridEnv((3, 4), 0.8, [(1, 1)], {(0, 3): +1, (1, 3): -1}, (2, 0))
     print "Test Q-Learning Agent\n"
     test.testLearningAgent(QLearning(env.getLegalActions), env, 5000)
     print "Test Epsilon Decreasing Agent\n"

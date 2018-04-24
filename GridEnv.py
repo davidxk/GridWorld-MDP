@@ -3,11 +3,13 @@ from random import random
 
 # Grid Environment for Q-Learning
 class GridEnv(GridWorld):
-    def __init__(self):
+    def __init__(self, shape, prob, walls, terminals, initial):
+        super(GridEnv, self).__init__(shape, prob, walls, terminals)
+        self.initial = initial
         self.curState = self.getInitialState()
 
     def getInitialState(self):
-        return (2, 0)
+        return self.initial
 
     def doAction(self, action):
         state = self.curState
@@ -16,17 +18,18 @@ class GridEnv(GridWorld):
             return self.getReward(state, action, self.curState), self.curState
         dice = random()
         dirc = action
-        if 0.8 <= dice < 0.9:
+        prob, accident = self.turns[0], self.turns[1]
+        if prob <= dice < prob + accident:
             dirc = GridWorld.DIRCS[(GridWorld.index[action] - 1) %
                     len(GridWorld.DIRCS)]
-        elif dice >= 0.9:
+        elif dice >= prob + accident:
             dirc = GridWorld.DIRCS[(GridWorld.index[action] + 1) %
                     len(GridWorld.DIRCS)]
         row = state[0] + dirc[0]
         col = state[1] + dirc[1]
-        landing = (row if 0 <= row < GridWorld.ROWS else state[0], 
-                    col if 0 <= col < GridWorld.COLS else state[1])
-        if landing == (1, 1):
+        landing = (row if 0 <= row < self.rows else state[0],
+                    col if 0 <= col < self.cols else state[1])
+        if landing in self.walls:
             landing = state
         self.curState = landing
         return self.getReward(state, action, self.curState), self.curState
@@ -36,15 +39,15 @@ class GridEnv(GridWorld):
     
     def printCnt(self, cnt):
         output = str()
-        divide = "----------- " * GridWorld.COLS + "\n"
-        for i in range(GridWorld.ROWS):
+        divide = "----------- " * self.cols + "\n"
+        for i in range(self.rows):
             lines = []
             #"   00001   |    00001   |"
             # ????? ?????| ????? ?????|
             #"   00003   |    00003   |"
             for action in [GridWorld.NORTH, GridWorld.SOUTH]:
                 line = str()
-                for j in range(GridWorld.COLS):
+                for j in range(self.cols):
                     if (i, j) in [(1, 1), (0, 3), (1, 3)]:
                         line += "           |"
                     else:
@@ -54,7 +57,7 @@ class GridEnv(GridWorld):
             #"00002 00002| 00002 00002|"
             #    ?????   |    ?????   | 
             line = str()
-            for j in range(GridWorld.COLS):
+            for j in range(self.cols):
                 if (i, j) == (1, 1):
                     line += "           |"
                 elif (i, j) in [(0, 3), (1, 3)]:

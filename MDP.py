@@ -1,5 +1,5 @@
 # Stochastic environment for Markov Decision Process
-class MDP:
+class MDP(object):
     def getStates():
         pass
 
