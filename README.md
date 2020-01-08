@@ -1,23 +1,23 @@
-# GridWorld-MDP
-Implementation of Bellman update Value Iteration and Temporal Difference Q-Learning agent demonstrated with Grid World. 
+# GridWorld-ADP
+Implementation of Bellman update Value Iteration and Temporal Difference Q-Learning agent demonstrated with Grid World.
 
 The Q-Learning implementations addressed the following issues:
 
 * To converge, a decreasing learning rate **α** is used in Q-Learning Agent
 * To address the exploration/exploitation problem, a decreasing exploration rate **ε** is used in Epsilon Decreasing Agent
 
-**Dependency**: `matplotlib`. Install with command `pip install matplotlib`. 
+**Dependency**: `matplotlib`. Install with command `pip3 install matplotlib`.
 
 To run Value Iteration in Grid World, run command:
 
 ```shell
-$ python TestValueIteration.py
+$ python3 TestValueIteration.py
 ```
 
 To run Q-Learning agents in Grid World, run command:
 
 ```shell
-$ python TestLearningAgent.py
+$ python3 TestLearningAgent.py
 ```
 
 Sample output
@@ -52,4 +52,4 @@ Grid world Value Iteration with discounted rewards gamma = 0.90
  _ _ _ _
 ```
 
-Class Diagram can be found at [doc.svg](doc.svg). 
+Class Diagram can be found at [doc.svg](doc.svg).

@@ -48,8 +48,8 @@ class TestLearningAgent:
         env.printCnt(agent.cnt)
         env.printPolicy(agent.getPolicy(env.getStates()))
         # Visualize RMSE trend
-        print "Final RMSE: %f" % rmse[-1]
-        print "Final score: %d\n" % score
+        print("Final RMSE: %f" % rmse[-1])
+        print("Final score: %d\n" % score)
         plt.plot(rmse)
         plt.show()
 
@@ -58,7 +58,7 @@ class TestLearningAgent:
 if __name__ == "__main__":
     test = TestLearningAgent()
     env = GridEnv((3, 4), 0.8, [(1, 1)], {(0, 3): +1, (1, 3): -1}, (2, 0))
-    print "Test Q-Learning Agent\n"
+    print("Test Q-Learning Agent\n")
     test.testLearningAgent(QLearning(env.getLegalActions), env, 5000)
-    print "Test Epsilon Decreasing Agent\n"
+    print("Test Epsilon Decreasing Agent\n")
     test.testLearningAgent(EpsilonDecreasing(env.getLegalActions), env, 5000)

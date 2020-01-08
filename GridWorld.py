@@ -69,7 +69,7 @@ class GridWorld(MDP):
             for j in range(self.cols):
                 output += "   %+.2f   |" % values[(i, j)]
             output += divide
-        print output
+        print(output)
 
     def printQValues(self, qvalues):
         output = str()
@@ -101,7 +101,7 @@ class GridWorld(MDP):
                                             qvalues[(i, j), GridWorld.EAST]) 
             line += "\n"
             output += lines[0] + line + lines[1] + divide
-        print output
+        print(output)
 
     def printPolicy(self, policy):
         actmap = { GridWorld.NORTH: '^', GridWorld.EAST: '>',
@@ -114,7 +114,7 @@ class GridWorld(MDP):
         actstrs = [actmap[policy[(2, j)]] for j in range(4)]
         third = '|' + ' '.join(actstrs) + "|\n"
         output = divide + first + second + third + divide
-        print output
+        print(output)
 
 
 # Additive Grid Environment for MDP Value Iteration

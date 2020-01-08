@@ -67,5 +67,5 @@ class GridEnv(GridWorld):
                                             cnt[(i, j), GridWorld.EAST]) 
             line += "\n"
             output += lines[0] + line + lines[1] + divide
-        print output
+        print(output)
 
